@@ -5,6 +5,6 @@ A SQL driven ORM that does not do black magic but knows what it talking about (i
 
 Apache V2 Licenced.
 
-build
-=====
-Make sure to run the ```\i src/test/resources/josql_test_db.sql``` on your postgresql (current unit tests use this database)
+### build
+Make sure to run the ```\i src/test/resources/josql_test_db.sql``` on your postgresql before building.
+ 
