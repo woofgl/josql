@@ -58,6 +58,11 @@ public class CRUDTests extends JSQLizerTestSupport {
         int c = runner.executeCount("select count(id) from contact");
         assertEquals(1,c);
         
+        // test the delete
+        runner.delete("contact",id);
+        contactMap = runner.get("contact", mapIt("id",id));
+        assertNull(contactMap);
+        
         runner.close();
     }
     
@@ -93,8 +98,26 @@ public class CRUDTests extends JSQLizerTestSupport {
         assertEquals("Luc",contact.getFirstName());
         
         // get it by name
-        contact = runner.get(Contact.class, MapUtil.mapIt("name","luckyluc"));
+        contact = runner.get(Contact.class, mapIt("name","luckyluc"));
         assertEquals(id,contact.getId());
+        
+        // test the delete(object)
+        runner.delete(contact);
+        contact = runner.get(Contact.class, mapIt("name","luckyluc"));
+        assertNull(contact);
+        
+        // test the delete(class,id)
+        contact = new Contact();
+        contact.setName("joe");
+        id = 111L;
+        contact.setId(id);
+        id = (Long) runner.insert(contact);
+        assertEquals(111L,id);
+        contact = runner.get(Contact.class, id);
+        runner.delete(Contact.class,id);
+        contact = runner.get(Contact.class, id);
+        assertNull(contact);
+        
         runner.close();
     }
     
