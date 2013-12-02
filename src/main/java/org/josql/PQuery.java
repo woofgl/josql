@@ -20,12 +20,12 @@ public class PQuery extends Query {
         this.pstmt = pstmt;
     }    
 
-    public PQuery setValues(Object[] values){
+    public PQuery setValues(Object... values){
         dbHelper.setValues(pstmt, values);
         return this;
     }
     
-    public int executeCount(Object[] values){
+    public int executeCount(Object... values){
         int r = 0;
         ResultSet rs;
         setValues(values);
@@ -43,7 +43,7 @@ public class PQuery extends Query {
         
     }
     
-    public int executeUpdate(Object[] values) {
+    public int executeUpdate(Object... values) {
         int r;
         setValues(values);
         try {
@@ -54,7 +54,7 @@ public class PQuery extends Query {
         return r;
     }
     
-    public Object executeInsert(Object[] values){
+    public Object executeInsert(Object... values){
         Object r;
         setValues(values);
         try {
@@ -70,7 +70,7 @@ public class PQuery extends Query {
     }
     
     
-    public List<Map> executeQuery(Object[] values) {
+    public List<Map> executeQuery(Object... values) {
         ResultSet rs;
         setValues(values);
         try {
