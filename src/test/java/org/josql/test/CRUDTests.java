@@ -8,7 +8,6 @@ import org.josql.DBHelperBuilder;
 import org.josql.Runner;
 import org.josql.test.app.Contact;
 import org.josql.test.app.User;
-import org.josql.util.MapUtil;
 
 import static org.josql.util.MapUtil.mapIt;
 import static org.junit.Assert.*;
